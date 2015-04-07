@@ -3,7 +3,10 @@ require 'open-uri'
 require 'simple-rss'
 require 'htmlentities'
 
-rss = SimpleRSS.parse open('http://twitrss.me/twitter_user_to_rss/?user=IdarVassdal')
+puts 'Twitter username: '
+user = gets
+
+rss = SimpleRSS.parse open('http://twitrss.me/twitter_user_to_rss/?user=' + user)
 rss.entries.each do |entry|
   date_time = '(' + entry.pubDate.strftime('%d %b %Y, %H:%M') + ')'
   #seperate tweet text and author (first colon does the job)
